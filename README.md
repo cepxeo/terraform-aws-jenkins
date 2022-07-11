@@ -18,6 +18,9 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get update && sudo apt-get install terraform
 ```
 
+* Create a hosted zone for your domain name in AWS Route 53
+* Fill in variables.tf
+
 * Adjust ansible_templates/inventory_aws/tf_aws_ec2.yml for actual regions
 * Generate SSH key in ~/.ssh/id_rsa `ssh-keygen`
 * Obtain the admin level key from AWS and fill in via `aws configure`
@@ -39,7 +42,7 @@ Jenkins credentials are in ansible_templates/jenkins_auth
 ```
 ansible-inventory -i ansible_templates/inventory_aws/tf_aws_ec2.yml --graph
 
-
+ansible-playbook --extra-vars 'passed_in_hosts=tag_Name_jenkins_master_tf' ansible_templates/install_jenkins.yaml
 
 ansible-playbook --extra-vars 'passed_in_hosts=tag_Name_jenkins_worker_tf_1 master_ip=10.0.1.36' ansible_templates/install_worker.yaml
 ```

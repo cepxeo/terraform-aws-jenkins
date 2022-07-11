@@ -1,6 +1,6 @@
 variable "external_ip" {
   type    = string
-  default = "89.247.254.0/24"
+  default = "0.0.0.0/0"
 }
 
 variable "instance-type" {
@@ -14,7 +14,7 @@ variable "instance-type" {
 
 variable "dns-name" {
   type    = string
-  default = "documentorpro.de." # e.g "cmcloudlab1234.info."
+  default = "example.com." # e.g "cmcloudlab1234.info."
 }
 
 variable "profile" {
